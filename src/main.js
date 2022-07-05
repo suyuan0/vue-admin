@@ -7,7 +7,7 @@ import 'element-plus/dist/index.css'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import './styles/index.scss'
 
-console.log(process.env)
+console.log(process.env.VUE_APP_URL)
 const app = createApp(App)
 app.use(ElementPlus, {
   locale: zhCn
