@@ -24,3 +24,11 @@ export const getUserList = (data) => {
     method: 'GET'
   })
 }
+// 获取用户信息
+export const getRoleList = (data) => {
+  return request({
+    url: '/sys/role/list',
+    data,
+    method: 'GET'
+  })
+}
