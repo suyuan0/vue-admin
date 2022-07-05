@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-view></router-view>
+    菜单管理
   </div>
 </template>
 

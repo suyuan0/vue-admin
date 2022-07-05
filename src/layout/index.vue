@@ -3,7 +3,7 @@
     <SideBar class='sidebar-container'></SideBar>
     <div class='main'>
       <NavBar class='navbar-container'></NavBar>
-      <Main></Main>
+      <Main class='app-main'></Main>
     </div>
   </div>
 </template>
@@ -31,6 +31,11 @@ import Main from '@/layout/Main'
 
     .navbar-container {
       height: 90px;
+    }
+
+    .app-main {
+      height: calc(100vh - 90px);
+      padding: 10px;
     }
   }
 }
