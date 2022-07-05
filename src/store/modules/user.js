@@ -3,6 +3,7 @@ import { setItem, getItem } from '@/utils/storage'
 import { TOKEN } from '@/utils/constant'
 import { getUserInfo, getMenuNav } from '@/api/user'
 import router from '@/router'
+import { getTime } from '@/utils/timeout'
 
 export default {
   namespaced: true,
@@ -26,6 +27,7 @@ export default {
   actions: {
     async userLogin({ commit }, data) {
       await login(data)
+      getTime()
     },
     setToken({ commit }, token) {
       commit('setToken', token)

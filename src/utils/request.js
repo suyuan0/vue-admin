@@ -2,6 +2,7 @@ import axios from 'axios'
 import { loading } from '@/utils/loading'
 import { ElMessage } from 'element-plus'
 import store from '@/store'
+import { timeout } from '@/utils/timeout'
 
 const instance = axios.create({
   baseURL: 'https://www.markerhub.com/vueadmin-java',
@@ -12,6 +13,9 @@ const instance = axios.create({
 instance.interceptors.request.use(
   function (config) {
     loading()
+    if (timeout()) {
+      store.dispatch('user/userLogout')
+    }
     if (store.getters.token) {
       config.headers.Authorization = store.getters.token
     }
@@ -37,6 +41,7 @@ instance.interceptors.response.use(
       return data
     }
     _showError(msg)
+    return Promise.reject(msg)
     // 对响应数据做点什么
   },
   function (error) {
@@ -48,6 +53,11 @@ instance.interceptors.response.use(
     }
     if (message.includes('timeout')) {
       _showError('网络超时')
+    }
+    const { code } = error.response.data
+    if (code === 401) {
+      _showError('请重新登录')
+      store.dispatch('user/userLogout')
     }
     return Promise.reject(error)
   }
