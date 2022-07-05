@@ -5,7 +5,7 @@
       <avatar></avatar>
     </div>
     <div class='tagsview'>
-      123
+      <TagsView></TagsView>
     </div>
   </div>
 </template>
@@ -13,6 +13,7 @@
 <script setup>
 
 import Avatar from '@/components/avatar'
+import TagsView from '@/components/TagsView'
 </script>
 
 <style lang='scss' scoped>

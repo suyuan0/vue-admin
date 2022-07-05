@@ -39,6 +39,7 @@ export default {
     async getMenuNav({ commit }) {
       const data = await getMenuNav()
       commit('setMenuNav', data)
+      return data
     },
     async userLogout({ commit }) {
       commit('setToken', '')

@@ -14,7 +14,8 @@ router.beforeEach(async (to, from, next) => {
         await store.dispatch('user/setUserInfo')
       }
       if (!menuNav) {
-        await store.dispatch('user/getMenuNav')
+        const { nav } = await store.dispatch('user/getMenuNav')
+        store.dispatch('menu/setMenuList', nav)
       }
       next()
     }
