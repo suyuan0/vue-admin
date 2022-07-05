@@ -1,11 +1,12 @@
 const getters = {
   token: (state) => state.user.token,
-  userInfo: (state) => {
+  hasUserInfo: (state) => {
     return JSON.stringify(state.user.userInfo) !== '{}'
   },
-  menuNav: (state) => {
+  hasMenuNav: (state) => {
     return JSON.stringify(state.user.menu) !== '{}'
-  }
+  },
+  userInfo: (state) => state.user.userInfo
 }
 
 export default getters

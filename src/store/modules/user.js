@@ -2,6 +2,7 @@ import { login } from '@/api/login'
 import { setItem, getItem } from '@/utils/storage'
 import { TOKEN } from '@/utils/constant'
 import { getUserInfo, getMenuNav } from '@/api/user'
+import router from '@/router'
 
 export default {
   namespaced: true,
@@ -28,7 +29,6 @@ export default {
     },
     setToken({ commit }, token) {
       commit('setToken', token)
-      console.log(token)
     },
     async setUserInfo({ commit }) {
       const data = await getUserInfo()
@@ -37,6 +37,12 @@ export default {
     async getMenuNav({ commit }) {
       const data = await getMenuNav()
       commit('setMenuNav', data)
+    },
+    async userLogout({ commit }) {
+      commit('setToken', '')
+      commit('setUserInfo', {})
+      commit('setMenuNav', {})
+      router.push('/login')
     }
   }
 }

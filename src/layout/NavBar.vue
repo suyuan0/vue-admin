@@ -2,6 +2,7 @@
   <div class='navbar'>
     <div class='title'>
       <strong>VueAdmin后台管理系统</strong>
+      <avatar></avatar>
     </div>
     <div class='tagsview'>
       123
@@ -11,10 +12,13 @@
 
 <script setup>
 
+import Avatar from '@/components/avatar'
 </script>
 
 <style lang='scss' scoped>
 .navbar {
+  position: relative;
+
   .title {
     background: #17b3a3;
     height: 55px;
