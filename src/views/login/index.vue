@@ -1,19 +1,28 @@
 <template>
-  <div class='login-container'>
-    <div class='login-form'>
-      <el-form ref='formRef' :model='loginModel' :rules='rules' label-width='100px'>
-        <el-form-item label='用户名' prop='username'>
-          <el-input v-model='loginModel.username' placeholder='请输入用户名' />
+  <div class="login-container">
+    <div class="login-form">
+      <el-form
+        ref="formRef"
+        :model="loginModel"
+        :rules="rules"
+        label-width="100px"
+      >
+        <el-form-item label="用户名" prop="username">
+          <el-input v-model="loginModel.username" placeholder="请输入用户名" />
         </el-form-item>
-        <el-form-item label='密码' prop='password'>
-          <el-input v-model='loginModel.password' placeholder='请输入密码' type='password' />
+        <el-form-item label="密码" prop="password">
+          <el-input
+            v-model="loginModel.password"
+            placeholder="请输入密码"
+            type="password"
+          />
         </el-form-item>
-        <el-form-item class='imgCode' label='验证码' prop='code'>
-          <el-input v-model='loginModel.code' placeholder='请输入验证码' />
-          <img :src='imgCode' alt='' @click='getCaptcha'>
+        <el-form-item class="imgCode" label="验证码" prop="code">
+          <el-input v-model="loginModel.code" placeholder="请输入验证码" />
+          <img :src="imgCode" alt="" @click="getCaptcha" />
         </el-form-item>
         <el-form-item>
-          <el-button type='primary' @click='handleLogin'>提交</el-button>
+          <el-button type="primary" @click="handleLogin">提交</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -74,10 +83,7 @@ const loginModel = reactive({
 // 获取图形验证码
 const getCaptcha = async () => {
   try {
-    const {
-      captchaImg,
-      token
-    } = await getCode()
+    const { captchaImg, token } = await getCode()
     imgCode.value = captchaImg
     loginModel.token = token
   } catch (e) {
@@ -101,7 +107,7 @@ const handleLogin = async () => {
 
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .login-container {
   height: 100%;
   display: flex;

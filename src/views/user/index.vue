@@ -1,11 +1,11 @@
 <template>
   <div>
-    用户管理
+    <Search></Search>
   </div>
 </template>
 
 <script setup>
-
+import Search from '@/components/Search'
 </script>
 
 <style scoped>

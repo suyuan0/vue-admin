@@ -35,7 +35,7 @@ import Main from '@/layout/Main'
 
     .app-main {
       height: calc(100vh - 90px);
-      padding: 10px;
+      padding: 20px;
     }
   }
 }

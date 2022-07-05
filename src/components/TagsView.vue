@@ -1,7 +1,8 @@
 <template>
   <div>
     <ul>
-      <li v-for='(item,i) in tags' :key='i' class='tags-view' @click='changeTags(item)'>
+      <li v-for='(item,i) in tags' :key='i' :class='{active : $route.path === item.path}' class='tags-view'
+          @click='changeTags(item)'>
         {{ item.title }}
         <span @click.stop='handleDeleteTags(i,item.path)'>X</span>
       </li>
@@ -55,13 +56,13 @@ const handleDeleteTags = (i, path) => {
     display: none;
   }
 
-  &:hover {
-    color: #409eff;
-    border-bottom: 1px solid #fff;
-  }
-
   &:hover span {
     display: inline-block;
   }
+}
+
+.active {
+  color: #409eff;
+  border-bottom: 1px solid #fff;
 }
 </style>

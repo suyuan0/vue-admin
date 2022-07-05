@@ -16,7 +16,6 @@ const menuList = computed(() => {
   const children = filterRoutes(router.getRoutes())
   return removeChildren(generateMenus(children))
 })
-console.log(menuList)
 </script>
 
 <style scoped>

@@ -21,7 +21,6 @@ export default {
         path: '/:catchAll(.*)',
         redirect: '/404'
       })
-      console.log(result, '1')
       commit('setMenuList', result)
       return result
     }
