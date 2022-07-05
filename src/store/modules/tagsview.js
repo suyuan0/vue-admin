@@ -8,7 +8,7 @@ export default {
   }),
   mutations: {
     setTags(state, view) {
-      if (view.paht === '/login') return
+      if (!view.title) return
       const flag = state.tags.find((item) => item.path === view.path)
       if (!flag) {
         state.tags.push(view)

@@ -1,9 +1,9 @@
 <template>
   <div>
     <ul>
-      <li v-for='(item,i) in tags' :key='i' class='tags-view'>
+      <li v-for='(item,i) in tags' :key='i' class='tags-view' @click='changeTags(item)'>
         {{ item.title }}
-        <span @click='handleDeleteTags(i,item.path)'>X</span>
+        <span @click.stop='handleDeleteTags(i,item.path)'>X</span>
       </li>
     </ul>
   </div>
@@ -11,10 +11,11 @@
 
 <script setup>
 import { computed, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 
 const store = useStore()
+const router = useRouter()
 const route = useRoute()
 watch(() => route.path, (nval) => {
   const obj = {
@@ -26,6 +27,9 @@ watch(() => route.path, (nval) => {
 const tags = computed(() => {
   return store.getters.tagsView
 })
+const changeTags = (item) => {
+  router.push(item.path)
+}
 const handleDeleteTags = (i, path) => {
   store.commit('tagsview/deleteTags', {
     i,
