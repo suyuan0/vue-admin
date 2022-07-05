@@ -1,3 +1,4 @@
+<script src='../router/modules/sys/roles.js'></script>
 <template>
   <div>
     <router-view></router-view>

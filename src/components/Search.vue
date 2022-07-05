@@ -28,6 +28,7 @@ const batchDelete = () => {
 <style lang='scss' scoped>
 .search-container {
   height: 40px;
+  margin-bottom: 20px;
 
   .el-input {
     height: 100%;

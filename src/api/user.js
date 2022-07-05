@@ -15,3 +15,12 @@ export const getMenuNav = () => {
     method: 'GET'
   })
 }
+
+// 获取用户列表
+export const getUserList = (data) => {
+  return request({
+    url: '/sys/user/list',
+    data,
+    method: 'GET'
+  })
+}
