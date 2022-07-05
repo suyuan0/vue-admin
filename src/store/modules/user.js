@@ -16,7 +16,10 @@ export default {
   actions: {
     async userLogin({ commit }, data) {
       await login(data)
-      commit('setToken', data.token)
+    },
+    setToken({ commit }, token) {
+      commit('setToken', token)
+      console.log(token)
     }
   }
 }

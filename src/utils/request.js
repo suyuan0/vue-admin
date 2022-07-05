@@ -29,6 +29,9 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   function (response) {
     loading().close()
+    if (response.headers.authorization) {
+      store.dispatch('user/setToken', response.headers.authorization)
+    }
     const { code, msg, data } = response.data
     if (code === 200) {
       return data

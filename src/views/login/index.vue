@@ -25,6 +25,7 @@ import { reactive, ref } from 'vue'
 import { getCode } from '@/api/login'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+import { getUserInfo, getMenuNav } from '@/api/user'
 
 const router = useRouter()
 const store = useStore()
@@ -91,6 +92,8 @@ const handleLogin = async () => {
     await formRef.value.validate()
     await store.dispatch('user/userLogin', loginModel)
     router.push('/')
+    await getUserInfo()
+    await getMenuNav()
   } catch (e) {
     console.log(e)
   }
