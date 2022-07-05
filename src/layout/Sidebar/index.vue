@@ -7,9 +7,15 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { filterRoutes, generateMenus } from '@/utils/route'
+import { computed } from 'vue'
+import { removeChildren } from '@/utils/util'
 
 const router = useRouter()
-console.log(generateMenus(filterRoutes(router.getRoutes())))
+const menuList = computed(() => {
+  const children = filterRoutes(router.getRoutes())
+  return removeChildren(generateMenus(children))
+})
+console.log(menuList)
 </script>
 
 <style scoped>
