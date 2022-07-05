@@ -1,24 +1,29 @@
-import router from '@/router'
+// import router from '@/router'
+import { privateRoutes, publicRoutes } from '@/router'
 
 export default {
   namespaced: true,
   state: () => ({
-    menus: []
+    menus: publicRoutes
   }),
   mutations: {
     setMenuList(state, menu) {
-      menu.forEach((item) => {
-        if (!item.path) {
-          item.path = item.children[0].path
-        }
-      })
-      state.menus = menu
-      router.addRoute(menu)
+      state.menus = [...publicRoutes, ...menu]
     }
   },
   actions: {
-    setMenuList({ commit }, menu) {
-      commit('setMenuList', menu)
+    async setMenuList({ commit }, menu) {
+      const result = []
+      menu.forEach((menu) => {
+        result.push(...privateRoutes.filter((value) => value.name === menu))
+      })
+      result.push({
+        path: '/:catchAll(.*)',
+        redirect: '/404'
+      })
+      console.log(result, '1')
+      commit('setMenuList', result)
+      return result
     }
   }
 }

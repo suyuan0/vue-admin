@@ -14,8 +14,12 @@ router.beforeEach(async (to, from, next) => {
         await store.dispatch('user/setUserInfo')
       }
       if (!menuNav) {
-        const { nav } = await store.dispatch('user/getMenuNav')
-        store.dispatch('menu/setMenuList', nav)
+        const { authoritys } = await store.dispatch('user/getMenuNav')
+        const data = await store.dispatch('menu/setMenuList', authoritys)
+        data.forEach((item) => {
+          router.addRoute(item)
+        })
+        return next(to.path)
       }
       next()
     }

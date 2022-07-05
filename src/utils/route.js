@@ -43,9 +43,9 @@ export const generateMenus = (routes) => {
         path: routePath,
         children: []
       }
-    }
-    if (item.meta.title && item.meta.icon) {
-      result.push(route)
+      if (item.meta.title && item.meta.icon) {
+        result.push(route)
+      }
     }
     if (item.children) {
       route.children.push(...generateMenus(item.children))
