@@ -6,6 +6,7 @@ router.beforeEach(async (to, from, next) => {
   const token = store.getters.token
   const userInfo = store.getters.hasUserInfo
   const menuNav = store.getters.hasMenuNav
+  document.title = to.meta.title
   if (token) {
     if (to.path === '/login') {
       next(from.path)
