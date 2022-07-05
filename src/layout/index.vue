@@ -1,8 +1,8 @@
 <template>
   <div class='app-main-container'>
-    <SideBar></SideBar>
+    <SideBar class='sidebar-container'></SideBar>
     <div class='main'>
-      <NavBar></NavBar>
+      <NavBar class='navbar-container'></NavBar>
       <Main></Main>
     </div>
   </div>
@@ -16,6 +16,22 @@ import Main from '@/layout/Main'
 
 <style lang='scss' scoped>
 .app-main-container {
+  display: flex;
+  height: 100%;
 
+  .sidebar-container {
+    width: 200px;
+    background: #545c64;
+    height: 100%;
+  }
+
+  .main {
+    height: 100%;
+    flex: 1;
+
+    .navbar-container {
+      height: 90px;
+    }
+  }
 }
 </style>
