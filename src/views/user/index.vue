@@ -1,7 +1,28 @@
 <template>
   <div>
     <Search></Search>
-    <CustomTable :cols='cols' :data='tableList'></CustomTable>
+    <CustomTable :cols='cols' :data='tableList'>
+      <template v-slot:avatar='{row:{avatar}}'>
+        <el-avatar :src='avatar'></el-avatar>
+      </template>
+      <template v-slot:tag='{row:{roles}}'>
+        <el-tag v-for='item in roles' :key='item.id' style='margin-right: 5px' type='info'>{{ item.name }}</el-tag>
+      </template>
+      <template v-slot:status='{row:{statu}}'>
+        <el-tag :type='statu===1?"success":"danger"'>
+          {{ statu === 1 ? '正常' : '不正常' }}
+        </el-tag>
+      </template>
+      <template v-slot:actions>
+        <el-button link type='primary'>分配角色</el-button>
+        |
+        <el-button link type='primary'>重置密码</el-button>
+        |
+        <el-button link type='primary'>编辑</el-button>
+        |
+        <el-button link type='primary'>删除</el-button>
+      </template>
+    </CustomTable>
   </div>
 </template>
 
@@ -33,7 +54,7 @@ handleGetUserList()
 const cols = [
   {
     title: '头像',
-    name: 'avatar'
+    slot: 'avatar'
   },
   {
     title: '用户名',
@@ -41,7 +62,7 @@ const cols = [
   },
   {
     title: '角色名称',
-    name: 'roles'
+    slot: 'tag'
   },
   {
     title: '邮箱',
@@ -52,14 +73,15 @@ const cols = [
   },
   {
     title: '状态',
-    name: 'status'
+    slot: 'status'
   },
   {
     title: '创建时间',
     name: 'created'
   },
   {
-    title: '操作'
+    title: '操作',
+    slot: 'actions'
   }
 ]
 </script>

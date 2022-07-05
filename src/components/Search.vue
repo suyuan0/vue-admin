@@ -29,6 +29,9 @@ const batchDelete = () => {
 .search-container {
   height: 40px;
   margin-bottom: 20px;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
 
   .el-input {
     height: 100%;

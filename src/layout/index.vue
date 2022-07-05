@@ -27,7 +27,7 @@ import Main from '@/layout/Main'
 
   .main {
     height: 100%;
-    flex: 1;
+    width: calc(100vw - 200px);
 
     .navbar-container {
       height: 90px;
@@ -36,6 +36,8 @@ import Main from '@/layout/Main'
     .app-main {
       height: calc(100vh - 90px);
       padding: 20px;
+      overflow-y: auto;
+      width: calc(100vw - 250px);
     }
   }
 }

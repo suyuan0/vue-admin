@@ -1,8 +1,5 @@
-<script src='../router/modules/sys/roles.js'></script>
 <template>
-  <div>
-    <router-view></router-view>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script setup>
