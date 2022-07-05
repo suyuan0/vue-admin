@@ -7,10 +7,16 @@ export default {
   state: () => ({
     token: getItem(TOKEN) || ''
   }),
+  mutations: {
+    setToken(state, token) {
+      state.token = token
+      setItem(TOKEN, token)
+    }
+  },
   actions: {
-    async userLogin(state, data) {
+    async userLogin({ commit }, data) {
       await login(data)
-      setItem(TOKEN, data.token)
+      commit('setToken', data.token)
     }
   }
 }

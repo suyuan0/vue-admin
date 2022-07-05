@@ -24,7 +24,9 @@
 import { reactive, ref } from 'vue'
 import { getCode } from '@/api/login'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const store = useStore()
 // 表单ref
 const formRef = ref(null)
@@ -88,6 +90,7 @@ const handleLogin = async () => {
   try {
     await formRef.value.validate()
     await store.dispatch('user/userLogin', loginModel)
+    router.push('/')
   } catch (e) {
     console.log(e)
   }

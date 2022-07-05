@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { loading } from '@/utils/loading'
 import { ElMessage } from 'element-plus'
+import store from '@/store'
 
 const instance = axios.create({
   baseURL: 'https://www.markerhub.com/vueadmin-java',
@@ -11,6 +12,9 @@ const instance = axios.create({
 instance.interceptors.request.use(
   function (config) {
     loading()
+    if (store.getters.token) {
+      config.headers.Authorization = store.getters.token
+    }
     // 在发送请求之前做些什么
     return config
   },

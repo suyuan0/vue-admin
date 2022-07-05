@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import layout from '@/layout'
 
 const publicRoutes = [
   {
@@ -9,7 +10,7 @@ const publicRoutes = [
   {
     path: '/',
     name: 'layout',
-    component: () => import('@/layout')
+    component: layout
   }
 ]
 
