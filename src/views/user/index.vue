@@ -23,6 +23,9 @@
         <el-button link type='primary'>删除</el-button>
       </template>
     </CustomTable>
+    <MyDialog title='用户信息' width='500px'>
+      <MyForm></MyForm>
+    </MyDialog>
   </div>
 </template>
 
@@ -31,6 +34,8 @@ import Search from '@/components/Search'
 import CustomTable from '@/components/CustomTable'
 import { reactive, ref } from 'vue'
 import { getUserList } from '@/api/user'
+import MyDialog from '@/components/MyDialog'
+import MyForm from '@/components/MyForm'
 // 表格列表请求参数
 const userListModel = reactive({
   creent: 1,
